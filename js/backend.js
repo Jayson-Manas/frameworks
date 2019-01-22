@@ -10,10 +10,11 @@
 // JSON - javascript object notation
 
 
-            function newQuote() {
+            function newQuote(input) {
+                
                 //the url we are making a request to
                 // var url = "https://api.chucknorris.io/jokes/random?category=dev";
-                var url = "http://numbersapi.com/#random/math";
+                var url = "http://numbersapi.com/"+input+"/math?callback=";
 
 
                 $.ajax({
@@ -23,19 +24,32 @@
                         //do something when call is successful
                         console.log(data);
                         $('#quote').text(data.value);
+                        $('#quote').text(data);
+
+                        
                         $('#url').attr('href', data.url);
                         $('#icon').attr('src', data.icon_url);
                     },
                     error: function (error) {
                         console.log(error);
+                        alert('incorect input');
                     }
                 });
             }
 
-            $(document).ready(function () {
-                newQuote();
-                $('button').on('click', newQuote());
-            });
+            function useInput(){
+                
+                var input = document.getElementById('input').value
+                newQuote(input); 
+
+                document.getElementById('quote').innerHTML = input;
+
+            }
+
+            // $(document).ready(function () {
+            //     newQuote();
+            //     $('button').on('click', newQuote());
+            // });
         ////////////////////////////////////////task/////////////
         // api challenge
         // numbersapi.com/#42
@@ -57,3 +71,22 @@
         // know how to create a request
         // display the result
         // use a function to perform a repetitive task
+
+//         $.get('http://numbersapi.com/1337/trivia?notfound=floor&fragment', function(data) {
+//     $('#number').text(data);
+// });
+
+// function showNumber(str) {
+//     document.getElementById('number-fact').innerText = str;
+// }
+
+// (function() {
+//     var scriptTag = document.createElement('script');
+//     scriptTag.async = true;
+//     scriptTag.src = "http://numbersapi.com/42/math?callback=showNumber";
+//     document.body.appendChild(scriptTag);
+// })();
+
+// showNumber(str);
+
+
