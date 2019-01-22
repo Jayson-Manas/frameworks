@@ -33,6 +33,10 @@
                     error: function (error) {
                         console.log(error);
                         alert('incorect input');
+                        document.getElementById('input').value= '';
+                        document.getElementById('quote').innerHTML= '';
+
+
                     }
                 });
             }
