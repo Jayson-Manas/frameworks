@@ -70,6 +70,8 @@
                 el.innerHTML = randomNum;
 
                 useInput1(randomNum);
+                document.getElementById('input').value= '';
+
                 }
             // $(document).ready(function () {
             //     newQuote();
